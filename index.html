@@ -3,17 +3,20 @@
     <head>
         <meta charset="utf-8">
         <title>Sole</title>
-        <script type="text/javascript" charset="utf-8">
-            var 
-        </script>
     </head>
     <body>
         <h1>Sole</h1>
         <div id="module1" class="module">
+            <button id="but" type="button">Click</button>
         </div>
         <div id="module2" class="module">
         </div>
         <div id="module3" class="module">
         </div>
+        <script type="text/javascript" charset="utf-8">
+            document.getElementById("but").addEventListener('click', function(e) {
+                history.replaceState({}, "", "bar.html");
+            });
+        </script>
     </body>
 </html>

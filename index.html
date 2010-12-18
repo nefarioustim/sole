@@ -38,14 +38,14 @@
         <script type="text/javascript" charset="utf-8">
             $(document).ready(function(e) {
                 
-                var manifest = new $.sole.Manifest();
+                var page = new $.sole.Page()
+                        .setManifest(
+                            new $.sole.Manifest()
+                                .addModule('mod1', '#module1')
+                                .addModule('mod2', '#module2')
+                                .addModule('mod3', '#module3')
+                        );
                 
-                manifest
-                    .addModule('mod1', '#module1')
-                    .addModule('mod2', '#module2')
-                    .addModule('mod3', '#module3');
-                
-                console.log(manifest);
             });
         </script>
     </body>

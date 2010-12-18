@@ -32,22 +32,26 @@
             $(document).ready(function(e) {
             	
             	module("Manifest");
-
-            	test("Creation of Manifest object", function() {
+                
+            	test("Test creation of Manifest object", function() {
             		var manifest = new $.sole.Manifest();
             		ok(manifest, "Appears to have instantiated.");
             		ok(manifest instanceof $.sole.Manifest, "Is an instance of Manifest.");
             	});
             	
-            	test("Manifest.addModule() method", function() {
+            	test("Test Manifest.addModule() method", function() {
             	    var modId = 'mod1',
             	        modSelector = '#test-module1',
             	        manifest = new $.sole.Manifest();
+            	    
             	    ok(
             	        manifest.addModule(modId, modSelector),
             	        "Successfully added a module of '" + modId + "'."
             	    );
-            	    ok(manifest.modules[modId], "Manifest.modules." + modId + " exists.");
+            	    ok(
+            	        manifest.modules[modId],
+            	        "Manifest.modules." + modId + " exists."
+            	    );
             	    deepEqual(
             	        manifest.modules[modId].el.selector,
             	        $(modSelector).first().selector, // addModule enforces first() so the test must too.

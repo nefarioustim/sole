@@ -33,10 +33,21 @@
                 
                 module("Page");
                 
-            	test("Creation of Page object", function() {
+            	test("Test creation of Page object", function() {
             		var page = new $.sole.Page();
             		ok(page, "Appears to have instantiated.");
             		ok(page instanceof $.sole.Page, "Is an instance of Page.");
+            	});
+            	
+            	test("Test Page.setManifest() method", function() {
+            	    var page = new $.sole.Page(),
+            	        manifest = new $.sole.Manifest()
+                            .addModule('mod1', '#test-module1')
+                            .addModule('mod2', '#test-module2')
+                            .addModule('mod3', '#test-module3');
+                    
+                    ok(page.setManifest(manifest), "Ran successfully.");
+                    ok(page.manifest instanceof $.sole.Manifest, "Page.manifest is an instance of $.sole.Manifest.");
             	});
             	
             });

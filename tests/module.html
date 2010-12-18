@@ -33,13 +33,13 @@
                 
             	module("Module");
 
-            	test("Creation of Module object", function() {
+            	test("Test creation of Module object", function() {
             		var module = new $.sole.Module();
             		ok(module, "Appears to have instantiated.");
             		ok(module instanceof $.sole.Module, "Is an instance of Module.");
             	});
             	
-            	test("Module.bind() method with a single returning selector", function() {
+            	test("Test Module.bind() method with a single returning selector", function() {
             	    var module = new $.sole.Module(),
             	        test;
             	        
@@ -49,7 +49,7 @@
             	    equal(test.length, 1, "Expect Module.el to have a length of 1.");
             	});
             	
-            	test("Module.bind() method with a multiple returning selector", function() {
+            	test("Test Module.bind() method with a multiple returning selector", function() {
             	    var module = new $.sole.Module(),
             	        test;
             	        

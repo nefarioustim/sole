@@ -2,11 +2,11 @@
 <html lang="en-GB">
     <head>
         <meta charset="utf-8">
-        <title>QUnit Tests - Sole</title>
+        <title>sole.Manifest object test suite</title>
         <link rel="stylesheet" href="../lib/qunit/qunit.css" type="text/css" charset="utf-8">
     </head>
     <body>
-        <h1 id="qunit-header">QUnit Tests - Sole</h1>
+        <h1 id="qunit-header">sole.Manifest object test suite</h1>
         <h2 id="qunit-banner"></h2>
         <div id="qunit-testrunner-toolbar"></div>
         <h2 id="qunit-userAgent"></h2>
@@ -30,14 +30,6 @@
         <script type="text/javascript" charset="utf-8" src="../lib/qunit/qunit.js"></script>
         <script type="text/javascript" charset="utf-8">
             $(document).ready(function(e) {
-                
-                module("Page");
-                
-            	test("Creation of Page object", function() {
-            		var page = new $.sole.Page();
-            		ok(page, "Appears to have instantiated.");
-            		ok(page instanceof $.sole.Page, "Is an instance of Page.");
-            	});
             	
             	module("Manifest");
 
@@ -47,32 +39,20 @@
             		ok(manifest instanceof $.sole.Manifest, "Is an instance of Manifest.");
             	});
             	
-            	module("Module");
-
-            	test("Creation of Module object", function() {
-            		var module = new $.sole.Module();
-            		ok(module, "Appears to have instantiated.");
-            		ok(module instanceof $.sole.Module, "Is an instance of Module.");
-            	});
-            	
-            	test("Module.bind() method with a single returning selector", function() {
-            	    var module = new $.sole.Module(),
-            	        test;
-            	        
-            	    ok(module.bind("#test-module1"), "Ran successfully.");
-            	    test = module.el;
-            	    ok(test.jquery.length > 0, "Module.el is a jQuery object.");
-            	    equals(1, test.length, "We expect Module.el to have a length of 1.")
-            	});
-            	
-            	test("Module.bind() method with a multiple returning selector", function() {
-            	    var module = new $.sole.Module(),
-            	        test;
-            	        
-            	    ok(module.bind(".module"), "Ran successfully.");
-            	    test = module.el;
-            	    ok(test.jquery.length > 0, "Module.el is a jQuery object.");
-            	    equals(1, test.length, "We expect Module.el to have a length of 1.")
+            	test("Manifest.addModule() method", function() {
+            	    var modId = 'mod1',
+            	        modSelector = '#test-module1',
+            	        manifest = new $.sole.Manifest();
+            	    ok(
+            	        manifest.addModule(modId, modSelector),
+            	        "Successfully added a module of '" + modId + "'."
+            	    );
+            	    ok(manifest.modules[modId], "Manifest.modules." + modId + " exists.");
+            	    deepEqual(
+            	        manifest.modules[modId].el.selector,
+            	        $(modSelector).first().selector, // addModule enforces first() so the test must too.
+            	        "Manifest.modules." + modId + " is the correct jQuery object."
+            	    );
             	});
             	
             });

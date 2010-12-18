@@ -11,7 +11,20 @@
         <div id="qunit-testrunner-toolbar"></div>
         <h2 id="qunit-userAgent"></h2>
         <ol id="qunit-tests"></ol>
-        <div id="qunit-fixture">test markup, will be hidden</div>
+        <div id="qunit-fixture">
+            <div id="test-module1" class="module">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+            <div id="test-module2" class="module">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+            <div id="test-module3" class="module">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+        </div>
         <script type="text/javascript" charset="utf-8" src="../lib/jquery-1.4.4.min.js"></script>
         <script type="text/javascript" charset="utf-8" src="../lib/sole.js"></script>
         <script type="text/javascript" charset="utf-8" src="../lib/qunit/qunit.js"></script>
@@ -40,6 +53,26 @@
             		var module = new $.sole.Module();
             		ok(module, "Appears to have instantiated.");
             		ok(module instanceof $.sole.Module, "Is an instance of Module.");
+            	});
+            	
+            	test("Module.bind() method with a single returning selector", function() {
+            	    var module = new $.sole.Module(),
+            	        test;
+            	        
+            	    ok(module.bind("#test-module1"), "Ran successfully.");
+            	    test = module.el;
+            	    ok(test.jquery.length > 0, "Module.el is a jQuery object.");
+            	    equals(1, test.length, "We expect Module.el to have a length of 1.")
+            	});
+            	
+            	test("Module.bind() method with a multiple returning selector", function() {
+            	    var module = new $.sole.Module(),
+            	        test;
+            	        
+            	    ok(module.bind(".module"), "Ran successfully.");
+            	    test = module.el;
+            	    ok(test.jquery.length > 0, "Module.el is a jQuery object.");
+            	    equals(1, test.length, "We expect Module.el to have a length of 1.")
             	});
             	
             });

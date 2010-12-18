@@ -41,21 +41,9 @@
                 var manifest = new $.sole.Manifest();
                 
                 manifest
-                    .addModule(
-                        'module1',
-                        new $.sole.Module()
-                            .bind('#module1')
-                    )
-                    .addModule(
-                        'module2',
-                        new $.sole.Module()
-                            .bind('#module2')
-                    )
-                    .addModule(
-                        'module3',
-                        new $.sole.Module()
-                            .bind('#module3')
-                    );
+                    .addModule('mod1', '#module1')
+                    .addModule('mod2', '#module2')
+                    .addModule('mod3', '#module3');
                 
                 console.log(manifest);
             });
